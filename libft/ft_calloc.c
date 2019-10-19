@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbari <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/17 21:43:26 by mbari             #+#    #+#             */
-/*   Updated: 2019/10/18 19:06:33 by mbari            ###   ########.fr       */
+/*   Created: 2019/10/19 11:08:28 by mbari             #+#    #+#             */
+/*   Updated: 2019/10/19 12:03:43 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isalnum(int a)
+void	*ft_calloc(size_t count, size_t size)
 {
-	if (ft_isdigit(a) || ft_isalpha(a))
-		return (1);
-	return (0);
+	unsigned char	*rec;
+
+	rec = (void *)malloc(count * size);
+	if (!rec)
+		return (NULL);
+	ft_bzero(rec, size);
+	return ((void *)rec);
 }
