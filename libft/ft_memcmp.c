@@ -1,41 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memove.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbari <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/18 20:05:07 by mbari             #+#    #+#             */
-/*   Updated: 2019/10/20 20:42:30 by mbari            ###   ########.fr       */
+/*   Created: 2019/10/20 20:24:14 by mbari             #+#    #+#             */
+/*   Updated: 2019/10/20 20:41:27 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t			i;
-	unsigned char	*d;
-	unsigned char	*s;
+	size_t				i;
+	unsigned const char *d;
+	unsigned const char *s;
 
-	d = (unsigned char *)dst;
-	s = (unsigned char *)src;
-	if (d == NULL && s == NULL)
-		return ((void *)NULL);
-	i = -1;
-	if (len)
+	i = 0;
+	d = (unsigned const char *)s1;
+	s = (unsigned const char *)s2;
+	if (s1 == 0 && s2 == 0)
+		return (0);
+	while (n--)
 	{
-		if (src < dst)
-		{
-			len--;
-			while (++i <= len)
-				d[len - i] = s[len - i];
-		}
-		else
-		{
-			while (len--)
-				*d++ = *s++;
-		}
+		if (d[i] != s[i])
+			return ((int)(d[i] - s[i]));
+		i++;
 	}
-	return (dst);
+	return (0);
 }

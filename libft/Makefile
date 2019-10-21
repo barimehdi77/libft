@@ -1,14 +1,20 @@
 NAME = libft.a
+CC = gcc
+FLAGS = -Wall -Wextra  -Werror
+SRC = *.c \
 
 all: $(NAME)
 
 $(NAME):
-	gcc -Wall -Wextra -Werror -c *.c
-	ar rc $(NAME) *.o
+		$(CC) $(FLAGS) -c $(SRC) -I.
+			ar rc $(NAME) *.o
 
-clean :
-	rm -f *.o
+clean:
+		rm -rf *.o
 
-fclean : clean
-	rm -f $(NAME)
-re : fclean all
+fclean: clean
+		rm -rf *.a
+
+re: fclean all
+
+bonus :

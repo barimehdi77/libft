@@ -6,7 +6,7 @@
 /*   By: mbari <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 13:05:06 by mbari             #+#    #+#             */
-/*   Updated: 2019/10/18 18:00:53 by mbari            ###   ########.fr       */
+/*   Updated: 2019/10/20 19:57:30 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int		ft_atoi(const char *str)
 {
-	int				i;
-	long long int	r;
-	long long int	result;
+	size_t			i;
+	int				r;
+	int				result;
 
 	i = 0;
 	r = 1;

@@ -1,41 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memove.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbari <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/18 20:05:07 by mbari             #+#    #+#             */
-/*   Updated: 2019/10/20 20:42:30 by mbari            ###   ########.fr       */
+/*   Created: 2019/10/19 18:29:06 by mbari             #+#    #+#             */
+/*   Updated: 2019/10/19 20:11:37 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+char	*ft_substr(char const *s, unsigned int start,size_t len)
 {
 	size_t			i;
-	unsigned char	*d;
-	unsigned char	*s;
+	unsigned char	*s2;
 
-	d = (unsigned char *)dst;
-	s = (unsigned char *)src;
-	if (d == NULL && s == NULL)
-		return ((void *)NULL);
-	i = -1;
-	if (len)
+	s2 = (unsigned char *)malloc(len + 1);
+	if (!s2 || s == NULL)
+		return (NULL);
+	i = 0;
+	while (i < len)
 	{
-		if (src < dst)
-		{
-			len--;
-			while (++i <= len)
-				d[len - i] = s[len - i];
-		}
-		else
-		{
-			while (len--)
-				*d++ = *s++;
-		}
+		s2[i] = s[start];
+		start++;
+		i++;
 	}
-	return (dst);
+	s2[i] = '\0';
+	return ((char *)s2);
 }

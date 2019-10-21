@@ -1,41 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memove.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbari <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/18 20:05:07 by mbari             #+#    #+#             */
-/*   Updated: 2019/10/20 20:42:30 by mbari            ###   ########.fr       */
+/*   Created: 2019/10/20 16:21:35 by mbari             #+#    #+#             */
+/*   Updated: 2019/10/20 17:00:51 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+char	*ft_itoa(int n)
 {
-	size_t			i;
-	unsigned char	*d;
-	unsigned char	*s;
+	int				i;
+	unsigned int	r;
+	char			*str;
+	int				int_size;
 
-	d = (unsigned char *)dst;
-	s = (unsigned char *)src;
-	if (d == NULL && s == NULL)
-		return ((void *)NULL);
-	i = -1;
-	if (len)
+	i = 0;
+	int_size = ft_intsize(n);
+	if (n <= 0)
+		 int_size += 1;
+	if (!(str = (char *)malloc(sizeof(char) * int_size + 1)))
+		return (NULL);
+	if (n <= 0)
 	{
-		if (src < dst)
-		{
-			len--;
-			while (++i <= len)
-				d[len - i] = s[len - i];
-		}
-		else
-		{
-			while (len--)
-				*d++ = *s++;
-		}
+		i = 1;
+		str[0] = n == 0 ? '0' : '-';
+		r = -n;
 	}
-	return (dst);
+	else
+		r = n;
+	str[int_size] = '\0';
+	while (i <= --int_size)
+	{
+		str[int_size] = r % 10 + '0';
+		r /= 10;
+	}
+	return (str);
 }

@@ -6,16 +6,13 @@
 /*   By: mbari <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 18:59:35 by mbari             #+#    #+#             */
-/*   Updated: 2019/10/17 19:01:06 by mbari            ###   ########.fr       */
+/*   Updated: 2019/10/20 20:00:02 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_toupper(int i)
 {
-	char	toupper;
-
-	toupper = i;
-	if (toupper >= 'a' && toupper <= 'z')
-		return (toupper - 32);
-	return (toupper);
+	if (i >= 'a' && i <= 'z')
+		i -= 32;
+	return (i);
 }

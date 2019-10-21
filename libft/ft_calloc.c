@@ -6,7 +6,7 @@
 /*   By: mbari <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 11:08:28 by mbari             #+#    #+#             */
-/*   Updated: 2019/10/19 12:03:43 by mbari            ###   ########.fr       */
+/*   Updated: 2019/10/20 20:13:24 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ void	*ft_calloc(size_t count, size_t size)
 	rec = (void *)malloc(count * size);
 	if (!rec)
 		return (NULL);
-	ft_bzero(rec, size);
-	return ((void *)rec);
+	ft_bzero(rec, count * size);
+	return (rec);
 }

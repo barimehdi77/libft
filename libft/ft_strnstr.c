@@ -1,41 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memove.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbari <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/18 20:05:07 by mbari             #+#    #+#             */
-/*   Updated: 2019/10/20 20:42:30 by mbari            ###   ########.fr       */
+/*   Created: 2019/10/21 20:53:34 by mbari             #+#    #+#             */
+/*   Updated: 2019/10/21 23:21:02 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+char	*ft_strnstr(const char *l, const char *s, size_t len)
 {
-	size_t			i;
-	unsigned char	*d;
-	unsigned char	*s;
+	size_t	j;
 
-	d = (unsigned char *)dst;
-	s = (unsigned char *)src;
-	if (d == NULL && s == NULL)
-		return ((void *)NULL);
-	i = -1;
-	if (len)
+	if (*s == '\0')
+		return ((char *)l);	
+	while (*l != '\0' && len != 0)
 	{
-		if (src < dst)
+		j = 0;
+		while (l[j] == s[j] && len-- != 0)
 		{
-			len--;
-			while (++i <= len)
-				d[len - i] = s[len - i];
+			if (s[j + 1] == '\0')
+				return ((char *)l);
+			j++;			
 		}
-		else
-		{
-			while (len--)
-				*d++ = *s++;
-		}
+		l++;
+		len--;
 	}
-	return (dst);
+	return (NULL);
 }
+
