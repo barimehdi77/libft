@@ -6,7 +6,7 @@
 /*   By: mbari <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 20:53:34 by mbari             #+#    #+#             */
-/*   Updated: 2019/10/21 23:21:02 by mbari            ###   ########.fr       */
+/*   Updated: 2019/10/22 18:48:13 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strnstr(const char *l, const char *s, size_t len)
 	size_t	j;
 
 	if (*s == '\0')
-		return ((char *)l);	
+		return ((char *)l);
 	while (*l != '\0' && len != 0)
 	{
 		j = 0;
@@ -25,11 +25,10 @@ char	*ft_strnstr(const char *l, const char *s, size_t len)
 		{
 			if (s[j + 1] == '\0')
 				return ((char *)l);
-			j++;			
+			j++;
 		}
 		l++;
 		len--;
 	}
 	return (NULL);
 }
-

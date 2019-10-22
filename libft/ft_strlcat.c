@@ -1,42 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbari <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/20 16:21:35 by mbari             #+#    #+#             */
-/*   Updated: 2019/10/22 18:45:53 by mbari            ###   ########.fr       */
+/*   Created: 2019/10/22 17:09:08 by mbari             #+#    #+#             */
+/*   Updated: 2019/10/22 18:37:32 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa(int n)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	int				i;
-	char			*str;
-	int				int_size;
+	size_t	i;
+	size_t	ldest;
+	size_t	lsrc;
+	size_t	j;
 
+	j = 0;
+	ldest = ft_strlen(dest);
+	lsrc = ft_strlen(src);
+	if (dest == NULL && src == NULL)
+		return (0);
+	if (ldest < size)
+		j = size - ldest - 1;
 	i = 0;
-	int_size = ft_intsize(n);
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	if (n <= 0)
-		int_size += 1;
-	if (!(str = (char *)malloc(sizeof(char) * int_size + 1)))
-		return (NULL);
-	if (n <= 0)
+	while (i < j && src[i])
 	{
-		i = 1;
-		str[0] = n == 0 ? '0' : '-';
-		n = -n;
+		dest[i + ldest] = src[i];
+		i++;
 	}
-	str[int_size] = '\0';
-	while (i <= --int_size)
-	{
-		str[int_size] = n % 10 + '0';
-		n /= 10;
-	}
-	return (str);
+	dest[i + ldest] = '\0';
+	if (size > ldest)
+		return (ldest + lsrc);
+	else
+		return (lsrc + size);
 }
