@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbari <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/22 15:02:08 by mbari             #+#    #+#             */
-/*   Updated: 2019/10/23 19:20:46 by mbari            ###   ########.fr       */
+/*   Created: 2019/10/27 03:53:23 by mbari             #+#    #+#             */
+/*   Updated: 2019/10/27 06:26:44 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *))
 {
-	size_t	i;
+	t_list		*new;
+	t_list		*tmp;
+	t_list		*begin;
 
-	i = 0;
-	if (dest == NULL && src == NULL)
-		return (0);
-	while (i + 1 < size && src[i])
+	if (lst)
 	{
-		dest[i] = src[i];
-		i++;
+		tmp = lst;
+		begin = ft_lstnew(f(tmp->content));
+		tmp = tmp->next;
+		while (tmp)
+		{
+			new = ft_lstnew(f(tmp->content));
+			ft_lstadd_back(&begin, new);
+			tmp = tmp->next;
+		}
+		return (begin);
 	}
-	if (size != 0)
-		dest[i] = '\0';
-	return (ft_strlen(src));
+	return (NULL);
 }

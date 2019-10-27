@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbari <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/22 15:02:08 by mbari             #+#    #+#             */
-/*   Updated: 2019/10/23 19:20:46 by mbari            ###   ########.fr       */
+/*   Created: 2019/10/24 23:53:45 by mbari             #+#    #+#             */
+/*   Updated: 2019/10/25 15:44:39 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+void	ft_lstadd_back(t_list **alst, t_list *new)
 {
-	size_t	i;
+	t_list	*tmp;
 
-	i = 0;
-	if (dest == NULL && src == NULL)
-		return (0);
-	while (i + 1 < size && src[i])
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	if (size != 0)
-		dest[i] = '\0';
-	return (ft_strlen(src));
+	if (*alst == NULL)
+		*alst = new;
+	tmp = ft_lstlast(*(alst));
+	tmp->next = new;
+	tmp->next->next = NULL;
 }
