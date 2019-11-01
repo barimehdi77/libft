@@ -6,15 +6,15 @@
 /*   By: mbari <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 22:12:29 by mbari             #+#    #+#             */
-/*   Updated: 2019/10/23 23:09:49 by mbari            ###   ########.fr       */
+/*   Updated: 2019/11/01 14:11:21 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		count_words(char const *s, char c)
+static int		count_words(char const *s, char c)
 {
-	int		count;
+	int			count;
 
 	count = 0;
 	while (*s && *s == c)
@@ -28,10 +28,10 @@ int		count_words(char const *s, char c)
 	return (count);
 }
 
-char	*word_len(char const *str, char c)
+static char		*word_len(char const *str, char c)
 {
-	char	*word;
-	int		i;
+	char		*word;
+	int			i;
 
 	i = 0;
 	while (str[i] && str[i] != c)
@@ -47,11 +47,11 @@ char	*word_len(char const *str, char c)
 	return (word);
 }
 
-char	**ft_split(char const *s, char c)
+char			**ft_split(char const *s, char c)
 {
-	int		i;
-	int		len_w;
-	char	**arr;
+	int			i;
+	int			len_w;
+	char		**arr;
 
 	if (!s)
 		return (NULL);

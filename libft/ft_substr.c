@@ -6,7 +6,7 @@
 /*   By: mbari <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 18:29:06 by mbari             #+#    #+#             */
-/*   Updated: 2019/10/24 20:10:17 by mbari            ###   ########.fr       */
+/*   Updated: 2019/10/31 11:24:47 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,5 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		}
 	}
 	s2[i] = '\0';
-	return ((char *)s2);
+	return (s2);
 }

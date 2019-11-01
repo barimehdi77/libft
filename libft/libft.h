@@ -6,7 +6,7 @@
 /*   By: mbari <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 18:51:44 by mbari             #+#    #+#             */
-/*   Updated: 2019/10/27 03:51:33 by mbari            ###   ########.fr       */
+/*   Updated: 2019/10/31 13:30:06 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int					ft_isascii(int asci);
 int					ft_isdigit(int d);
 int					ft_isprint(int p);
 char				*ft_strchr(const char *str, int c);
-int					ft_strlen(const char *str);
+size_t				ft_strlen(const char *str);
 char				*ft_strchr(const char *str, int c);
 int					ft_strncmp(const char *str1, const char *str2, size_t n);
 char				*ft_strrchr(const char *s, int r);
@@ -68,5 +68,6 @@ void				ft_lstadd_back(t_list **alst, t_list *new);
 void				ft_lstdelone(t_list *lst, void (*del)(void*));
 void				ft_lstclear(t_list **lst, void (*del)(void*));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
+t_list				*ft_lstmap(t_list *lst, void *(*f)(void *));
 
 #endif

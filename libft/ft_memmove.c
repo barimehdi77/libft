@@ -6,7 +6,7 @@
 /*   By: mbari <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 20:05:07 by mbari             #+#    #+#             */
-/*   Updated: 2019/10/20 20:42:30 by mbari            ###   ########.fr       */
+/*   Updated: 2019/10/31 00:42:36 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,8 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 				d[len - i] = s[len - i];
 		}
 		else
-		{
 			while (len--)
 				*d++ = *s++;
-		}
 	}
 	return (dst);
 }
