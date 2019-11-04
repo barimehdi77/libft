@@ -6,7 +6,7 @@
 #    By: mbari <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/30 09:48:13 by mbari             #+#    #+#              #
-#    Updated: 2019/10/30 13:10:23 by mbari            ###   ########.fr        #
+#    Updated: 2019/11/01 16:03:03 by mbari            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,14 +35,15 @@ CFLAGS = -Wall -Werror -Wextra
 all: $(NAME)
 
 bonus: all $(BONUS_OBJ)
-		@$(CC) $(CFLAGS) -c $(SRC_BONUS)
-		@ar rc $(NAME) $(BONUS_OBJ)
-		@ranlib $(NAME)
+		ar rc $(NAME) $(BONUS_OBJ)
+		ranlib $(NAME)
 
-$(NAME): $(OBJ) libft.h
-		@$(CC) $(CFLAGS) -c $(SRC)
-		@ar rc $(NAME) $(OBJ)
-		@ranlib $(NAME)
+$(NAME): $(OBJ)
+		ar rc $(NAME) $(OBJ)
+		ranlib $(NAME)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $<
 
 clean: 
 	/bin/rm -f $(OBJ) $(BONUS_OBJ)

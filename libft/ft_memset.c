@@ -6,7 +6,7 @@
 /*   By: mbari <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 19:19:48 by mbari             #+#    #+#             */
-/*   Updated: 2019/10/31 00:23:12 by mbari            ###   ########.fr       */
+/*   Updated: 2019/11/01 16:24:35 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ void	*ft_memset(void *b, int c, size_t len)
 	str = b;
 	i = -1;
 	while (++i < len)
-		*str++ = c;
+		*str++ = (unsigned char)c;
 	return (b);
 }
