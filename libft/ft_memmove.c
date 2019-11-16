@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memove.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbari <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: abdel-ke <abdel-ke@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/18 20:05:07 by mbari             #+#    #+#             */
-/*   Updated: 2019/10/31 00:42:36 by mbari            ###   ########.fr       */
+/*   Created: 2019/10/19 18:23:31 by abdel-ke          #+#    #+#             */
+/*   Updated: 2019/11/11 17:23:37 by abdel-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t			i;
-	unsigned char	*d;
-	unsigned char	*s;
+	size_t	i;
+	char	*srcc;
+	char	*dstt;
 
-	d = (unsigned char *)dst;
-	s = (unsigned char *)src;
-	if (d == NULL && s == NULL)
-		return ((void *)NULL);
-	i = -1;
-	if (len)
-	{
-		if (src < dst)
+	srcc = (char *)src;
+	dstt = (char *)dst;
+	if (dst == src)
+		return (NULL);
+	i = 0;
+	if (src > dst)
+		while (len > i)
 		{
-			len--;
-			while (++i <= len)
-				d[len - i] = s[len - i];
+			dstt[i] = srcc[i];
+			i++;
 		}
-		else
-			while (len--)
-				*d++ = *s++;
-	}
+	else
+		while (len)
+		{
+			dstt[len - 1] = srcc[len - 1];
+			len--;
+		}
 	return (dst);
 }

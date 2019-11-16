@@ -3,22 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbari <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: abdel-ke <abdel-ke@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/18 16:07:46 by mbari             #+#    #+#             */
-/*   Updated: 2019/10/18 18:29:27 by mbari            ###   ########.fr       */
+/*   Created: 2019/10/18 18:45:10 by abdel-ke          #+#    #+#             */
+/*   Updated: 2019/11/09 15:18:58 by abdel-ke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int r)
+char	*ft_strrchr(const char *s, int c)
 {
-	if (ft_strchr(s, r) == NULL)
-		return (NULL);
-	while (*s)
-		s++;
-	while (*s != r)
-		s--;
-	return ((char *)s);
+	int		i;
+	char	*str;
+
+	str = (char *)s;
+	i = ft_strlen(str);
+	while (i != -1)
+	{
+		if (str[i] == (char)c)
+			return (str + i);
+		i--;
+	}
+	return (NULL);
 }

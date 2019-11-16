@@ -5,31 +5,36 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbari <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/27 03:53:23 by mbari             #+#    #+#             */
-/*   Updated: 2019/11/03 23:55:04 by mbari            ###   ########.fr       */
+/*   Created: 2019/11/16 13:01:33 by mbari             #+#    #+#             */
+/*   Updated: 2019/11/16 13:01:50 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list		*new;
-	t_list		*tmp;
-	t_list		*begin;
+	t_list	*alst;
+	t_list	*newlst;
+	void	*tmp;
 
-	if (lst)
+	if (!lst || !f)
+		return (NULL);
+	tmp = (*f)(lst->content);
+	if (!(newlst = ft_lstnew(tmp)))
+		return (NULL);
+	alst = newlst;
+	lst = lst->next;
+	while (lst)
 	{
-		tmp = lst;
-		begin = ft_lstnew(f(tmp->content));
-		tmp = tmp->next;
-		while (tmp)
+		tmp = (*f)(lst->content);
+		if (!(newlst->next = ft_lstnew(tmp)))
 		{
-			new = ft_lstnew(f(tmp->content));
-			ft_lstadd_back(&begin, new);
-			tmp = tmp->next;
+			ft_lstclear(&alst, del);
+			return (NULL);
 		}
-		return (begin);
+		newlst = newlst->next;
+		lst = lst->next;
 	}
-	return (NULL);
+	return (alst);
 }

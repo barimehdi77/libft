@@ -6,7 +6,7 @@
 #    By: mbari <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/30 09:48:13 by mbari             #+#    #+#              #
-#    Updated: 2019/11/01 16:03:03 by mbari            ###   ########.fr        #
+#    Updated: 2019/11/13 22:08:17 by mbari            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ CFLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 
-bonus: all $(BONUS_OBJ)
+bonus:  $(BONUS_OBJ)
 		ar rc $(NAME) $(BONUS_OBJ)
 		ranlib $(NAME)
 

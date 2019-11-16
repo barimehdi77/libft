@@ -6,7 +6,7 @@
 /*   By: mbari <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 18:51:44 by mbari             #+#    #+#             */
-/*   Updated: 2019/10/31 13:30:06 by mbari            ###   ########.fr       */
+/*   Updated: 2019/11/16 12:50:37 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ typedef struct		s_list
 
 void				*ft_memset(void *ptr, int x, size_t len);
 void				ft_bzero(void *ptr, size_t l);
-void				*ft_memcpy(void *str1, void *str2, size_t n);
-void				*ft_memccpy(void *dest, void *src, int c, size_t n);
+void				*ft_memcpy(void *dst, const void *src, size_t n);
+void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void				*ft_memmove(void *dst, const void *src, size_t len);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 void				*ft_memchr(const void *str, int c, size_t n);
@@ -68,6 +68,7 @@ void				ft_lstadd_back(t_list **alst, t_list *new);
 void				ft_lstdelone(t_list *lst, void (*del)(void*));
 void				ft_lstclear(t_list **lst, void (*del)(void*));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
-t_list				*ft_lstmap(t_list *lst, void *(*f)(void *));
+t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
+								void (*del)(void *));
 
 #endif

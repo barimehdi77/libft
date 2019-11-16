@@ -6,7 +6,7 @@
 /*   By: mbari <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 00:00:28 by mbari             #+#    #+#             */
-/*   Updated: 2019/11/03 23:56:48 by mbari            ###   ########.fr       */
+/*   Updated: 2019/11/15 01:55:20 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,6 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*))
 	{
 		del(lst->content);
 		free(lst);
+		lst->next = NULL;
 	}
 }
