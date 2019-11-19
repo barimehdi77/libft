@@ -6,16 +6,16 @@
 /*   By: mbari <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 15:24:38 by mbari             #+#    #+#             */
-/*   Updated: 2019/10/24 20:14:08 by mbari            ###   ########.fr       */
+/*   Updated: 2019/11/19 16:51:36 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		trim_start(char const *s1, char const *set)
+static int		trim_start(char const *s1, char const *set)
 {
-	size_t	i;
-	size_t	j;
+	size_t		i;
+	size_t		j;
 
 	i = 0;
 	j = 0;
@@ -32,10 +32,10 @@ int		trim_start(char const *s1, char const *set)
 	return (i);
 }
 
-int		trim_end(char const *s1, char const *set)
+static int		trim_end(char const *s1, char const *set)
 {
-	int		s1len;
-	int		j;
+	int			s1len;
+	int			j;
 
 	j = 0;
 	s1len = ft_strlen(s1) - 1;
@@ -52,12 +52,12 @@ int		trim_end(char const *s1, char const *set)
 	return (s1len);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+char			*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	i;
-	int		start;
-	int		end;
-	char	*s2;
+	size_t		i;
+	int			start;
+	int			end;
+	char		*s2;
 
 	if (s1 == NULL)
 		return (NULL);

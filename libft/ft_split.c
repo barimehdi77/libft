@@ -6,7 +6,7 @@
 /*   By: mbari <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 22:12:29 by mbari             #+#    #+#             */
-/*   Updated: 2019/11/01 16:32:41 by mbari            ###   ########.fr       */
+/*   Updated: 2019/11/19 16:50:43 by mbari            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,13 @@ static char		*word_len(char const *str, char c)
 	return (word);
 }
 
-void			freeall(char **arr)
+static void		freeall(int i, char **arr)
 {
-	int			i;
 	int			j;
 
-	i = -1;
 	j = -1;
-	while (j++ < i++)
-		free(arr[i]);
+	while (j++ <= i)
+		free(arr[j]);
 	free(arr);
 }
 
@@ -77,7 +75,7 @@ char			**ft_split(char const *s, char c)
 			s++;
 		arr[i] = word_len(s, c);
 		if (!arr[i])
-			freeall(arr);
+			freeall(i, arr);
 		while (*s && *s != c)
 			s++;
 		i++;
