@@ -6,7 +6,7 @@
 #    By: mbari <mbari@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/30 09:48:13 by mbari             #+#    #+#              #
-#    Updated: 2021/06/06 10:02:11 by mbari            ###   ########.fr        #
+#    Updated: 2021/06/06 19:33:11 by mbari            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,20 +32,29 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 
+
 all: $(NAME)
 
-$(NAME): $(OBJ)
+drawing:
+	@echo "$(BLUE)█████████████████████████ Making LIBFT █████████████████████████$(RESET)"
+
+$(NAME): drawing $(OBJ)
+	@echo "$(BLUE)█ $(YELLOW)Create and maintain library archives$(RESET) for all .o:\r\t\t\t\t\t\t\t$(GREEN){DONE}$(BLUE) █$(RESET)"
 	@ar rc $(NAME) $(OBJ)
+	@echo "$(BLUE)█ $(YELLOW)Creating$(RESET) $@:\r\t\t\t\t\t\t\t$(GREEN){DONE}$(BLUE) █$(RESET)"
 	@ranlib $(NAME)
+	@echo "$(BLUE)███████████████████████ Compiling is DONE ██████████████████████$(RESET)"	
 
 %.o: %.c
 	@echo "$(BLUE)█ $(YELLOW)Compiling$(RESET) $<:\r\t\t\t\t\t\t\t$(GREEN){DONE}$(BLUE) █$(RESET)"
 	@$(CC) $(CFLAGS) -c $<
 
-clean: 
+clean:
+	@echo "$(RED)deleting$(RESET): libft objects"
 	@/bin/rm -f $(OBJ) $(BONUS_OBJ)
 
 fclean: clean
+	@echo "$(RED)deleting$(RESET): $(NAME)"
 	@/bin/rm -f $(NAME)
 
 re: fclean all
